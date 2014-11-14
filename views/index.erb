@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="javascripts/jquery.js"></script>
+		<script type="text/javascript" src="javascripts/page.js"></script>
+		<link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
+		<link type="text/css" rel="stylesheet" href="stylesheets/page.css">
+		<title>SeedBoard - Index</title>
+	</head>
+	<body>
+		<img src="img/back.jpeg" id="ground">
+		<img src="img/bois.jpg" id="groundbis">
+		<div class="col-md-12" id="header">
+			<div id="api" style="margin-top:-35px;text-align:center;width:350px;color:#000000;"> 
+				<iframe src="http://www.zeitverschiebung.net/clock-widget-iframe?language=fr&timezone=Europe%2FParis" width="100%" height="120" frameborder="0" seamless></iframe>
+			</div>
+			<h1><strong>Bonjour <%= @client.login %></strong></h1>
+			<a href="/"><img src="img/out.png" id="out"></a>
+		</div>
+		<div class="col-md-12" id="empty">
+			<a href="https://www.facebook.com/simplonvillage"><img src="img/face.png" id="pic1"></a>
+			<a href="https://twitter.com/SimplonVillage"><img src="img/twit.png" id="pic2"></a>
+			<a href="https://simplon-village.slack.com/messages/general/"><img src="img/chat.png" id="pic4"></a>
+			<a href="https://simplon-village-2014.hackpad.com/"><img src="img/hack.png" id="pic5"></a>
+			<img src="img/prof.png" id="pic3">
+		</div>
+		<div class="col-md-12" id="para">
+			<a id="switch"><h3>Changer le mot de passe (non fonctionnel actuellement)</h3></a>
+		</div>
+		<div class="col-md-3 col-md-offset-1" id="info">
+			<img src="img/add.png" id="add">
+			<ul>
+				<li id="task1"></li>
+				<li id="task2"></li>
+				<li id="task3"></li>
+			</ul>
+		</div>
+		<div class="col-md-4" id="date">
+			<a href="https://www.google.com/calendar/embed?src=rt42s5pcokgcc51juvuunp6s8s%40group.calendar.google.com&ctz=Europe/Paris"><img src="img/agenda.jpg"></a>
+		</div>
+		<div class="col-md-3" id="msg">
+			<a class="twitter-timeline"  href="https://twitter.com/SimplonVillage" data-widget-id="532862198771494912">Tweets de @SimplonVillage</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          
+		</div>
+		<div class="col-md-7 col-md-offset-1" id="send">
+			<form action='/index' method="post">
+				<input type="text" name="chat" id="chatsize" maxlength="100">
+				<input type="submit" value="Envoyer">
+			</form>
+		</div>
+		<div class="col-md-7 col-md-offset-1" id="window">
+			<p>Bonjour et bienvenue sur l'intranet de simplon Village ! Rechargez la page pour actualiser le tchat.</p>
+			<% @msgs.each do |send| %>
+      				<p><%= send.content %></p>
+    			<% end %>
+			<form action='/del' method="delete">
+				<input type="submit" value="Vider">
+			</form>
+		</div>
+		<div class="col-md-12" id="footer">
+			<h1><strong>Intranet Simplon Village #Alpha</strong></h1>
+		</div>
+	</body>
+</html>
